@@ -18,12 +18,17 @@ class ProfileSerializer(serializers.ModelSerializer):
         - image: Image associated with the profile.
     """
     owner = serializers.ReadOnlyField(source='owner.username')  # Retrieves the username of the owner
+    is_owner = serializers.SerializerMethodField()
+
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
 
     class Meta:
         model = Profile  # Specifies the model to be serialized
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'name',
-            'content', 'image'
+            'content', 'image', 'is_owner'
         ]  # Defines the fields to include in the serialized output
 
 # class PostSerializers(serializers.ModelSerializer):
