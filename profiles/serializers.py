@@ -31,27 +31,4 @@ class ProfileSerializer(serializers.ModelSerializer):
             'content', 'image', 'is_owner'
         ]  # Defines the fields to include in the serialized output
 
-# class PostSerializers(serializers.ModelSerializer):
-#     """
-#     Serializer for the Post model.
 
-#     Why: This serializer converts Post model instances to JSON and vice versa,
-#          enabling serialization and deserialization for API interactions.
-
-#     Fields:
-#         - id: The unique identifier for the post.
-#         - owner: Foreign key field linking to the user who authored the post.
-#         - title: Title of the post.
-#         - content: Content or body of the post.
-#         - image: Image associated with the post.
-#         - profile_name: Read-only field that retrieves the name of the profile associated with the post's owner.
-#         - profile_image: Read-only field that retrieves the URL of the image associated with the profile of the post's owner.
-#     """
-#     profile_name = serializers.ReadOnlyField(source='owner.profile.name')  # Retrieves the name of the owner's profile
-#     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')  # Retrieves the URL of the owner's profile image
-
-#     class Meta:
-#         model = Post  # Specifies the model to be serialized
-#         fields = [
-#             'id', 'owner', 'title', 'content', 'image'
-#         ]  # Defines the fields to include in the serialized output
